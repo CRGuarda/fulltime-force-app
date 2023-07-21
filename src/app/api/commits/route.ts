@@ -1,4 +1,4 @@
-import { Commit } from '@/app/interfaces/types.dto'
+import { Commit } from '@/interfaces/types.dto'
 import { NextResponse } from 'next/server'
 import { Octokit, App } from 'octokit'
 

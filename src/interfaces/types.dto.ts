@@ -44,7 +44,7 @@ export interface Commit {
 export interface CommitAuthor {
   name: string
   email: string
-  date: Date
+  date: string
 }
 
 export interface Tree {
