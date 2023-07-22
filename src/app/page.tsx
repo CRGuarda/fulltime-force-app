@@ -3,6 +3,12 @@ import { getCommits } from '@/helpers/getCommits'
 import { CommitCard } from '@/components/CommitCard'
 import { Welcome } from '@/components/Welcome'
 import { ListOfValue } from '@/components/ListOfValue'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Fulltime Force App',
+  description: 'App to view the commits of a public github repository builded on NextJS',
+}
 
 export default async function Home() {
   const {
