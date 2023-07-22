@@ -10,9 +10,9 @@ export async function GET(request: Request) {
       data: { login, avatar_url, html_url },
     } = await octokit.rest.users.getAuthenticated()
 
-    const { data } = await octokit.request('GET /repos/CRGuarda/fulltime-force-app/commits', {
-      owner: 'CRGuarda',
-      repo: 'fulltime-force-app',
+    const { data } = await octokit.request('GET /repos/JorgePasco1/advent-of-code-2022/commits', {
+      owner: 'JorgePasco1',
+      repo: 'advent-of-code-2022',
       headers: {
         'X-GitHub-Api-Version': '2022-11-28',
       },
@@ -26,7 +26,8 @@ export async function GET(request: Request) {
     let errorMessage = 'Something bad happened.'
     if (error instanceof Error) {
       errorMessage = error.message
-      return NextResponse.json({ Error: error.message }, { status: 404 })
+      console.log(errorMessage)
+      return NextResponse.json({ error: error.message }, { status: 404 })
     }
     console.log(errorMessage)
   }
