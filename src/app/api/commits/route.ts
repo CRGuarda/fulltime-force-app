@@ -1,10 +1,8 @@
+import { octokit } from '@/helpers/octokit'
 import { Commit } from '@/interfaces/types.dto'
 import { NextResponse } from 'next/server'
-import { Octokit, App } from 'octokit'
 
-const octokit = new Octokit({ auth: process.env.API_TOKEN })
-
-export async function GET(request: Request) {
+export async function GET() {
   try {
     const {
       data: { login, avatar_url, html_url },
