@@ -1,6 +1,6 @@
 import { Commit, Main } from '@/interfaces/types.dto'
 import { getCommits } from '@/helpers/getCommits'
-import { CommitCard } from '@/components/commitCard'
+import { CommitCard } from '@/components/CommitCard'
 
 export default async function Home() {
   const {
@@ -15,7 +15,7 @@ export default async function Home() {
       <h2 className='text-center text-4xl'>
         Welcome,
         <a className='font-bold underline	' href={html_url} target='_blank' rel='noopener'>
-          {login}
+          @{login}
         </a>
       </h2>
       <section className='grid justify-center gap-8 grid-cols-[repeat(auto-fit,minmax(180px,1fr))] m-16'>
