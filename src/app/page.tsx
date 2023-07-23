@@ -17,7 +17,10 @@ export default async function Home() {
     avatar_url,
     html_url,
     commitResponse,
-  }: { login: string; commitResponse: Main[]; avatar_url: string; html_url: string; error: string } = await getCommits()
+  }: { login: string; commitResponse: Main[]; avatar_url: string; html_url: string; error: string } = await getCommits({
+    owner: 'CRGuarda',
+    repo: 'fulltime-force-app',
+  })
 
   if (error)
     return (

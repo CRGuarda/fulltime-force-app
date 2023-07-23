@@ -2,15 +2,18 @@ import { octokit } from '@/helpers/octokit'
 import { Commit } from '@/interfaces/types.dto'
 import { NextResponse } from 'next/server'
 
-export async function GET() {
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url)
+  const owner = searchParams.get('owner') || 'CRGuarda'
+  const repo = searchParams.get('repo') || 'fulltime-force-app'
   try {
     const {
       data: { login, avatar_url, html_url },
     } = await octokit.rest.users.getAuthenticated()
 
-    const { data } = await octokit.request('GET /repos/JorgePasco1/advent-of-code-2022/commits', {
-      owner: 'JorgePasco1',
-      repo: 'advent-of-code-2022',
+    const { data } = await octokit.request(`GET /repos/${owner}/${repo}/commits`, {
+      owner: 'CRGuarda',
+      repo: 'fulltime-force-app',
       headers: {
         'X-GitHub-Api-Version': '2022-11-28',
       },
