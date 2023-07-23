@@ -64,3 +64,8 @@ export interface Parent {
   url: string
   html_url: string
 }
+
+export interface Options {
+  value: string
+  label: string
+}
