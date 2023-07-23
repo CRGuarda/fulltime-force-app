@@ -29,10 +29,10 @@ export const ListOfValue = ({ setCredentials }: { setCredentials: any }) => {
     }, 1000)
   }
   return (
-    <div>
+    <>
       <label>Github username</label>
       <AsyncSelect
-        className='my-react-select-container'
+        className='my-react-select-container w-full md:w-1/2'
         classNamePrefix='my-react-select'
         placeholder='CRGuarda'
         loadOptions={loadOptions}
@@ -44,7 +44,7 @@ export const ListOfValue = ({ setCredentials }: { setCredentials: any }) => {
       <label>Public repo</label>
       <AsyncSelect
         key={ownerName || 'CRGuarda'}
-        className='my-react-select-container'
+        className='my-react-select-container w-full md:w-1/2'
         classNamePrefix='my-react-select'
         placeholder={ownerName ? `${ownerName} repos` : 'fulltime-force-app'}
         loadOptions={loadRepoOptions}
@@ -55,6 +55,6 @@ export const ListOfValue = ({ setCredentials }: { setCredentials: any }) => {
           setRepoName(input?.label)
         }}
       />
-    </div>
+    </>
   )
 }

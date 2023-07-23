@@ -6,12 +6,13 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
   const owner = searchParams.get('owner') || 'CRGuarda'
   const repo = searchParams.get('repo') || 'fulltime-force-app'
+  const page = searchParams.get('page') || 1
   try {
     const {
       data: { login, avatar_url, html_url },
     } = await octokit.rest.users.getAuthenticated()
 
-    const { data } = await octokit.request(`GET /repos/${owner}/${repo}/commits?per_page=25&page=1`, {
+    const { data } = await octokit.request(`GET /repos/${owner}/${repo}/commits?per_page=10&page=${page}`, {
       owner: 'CRGuarda',
       repo: 'fulltime-force-app',
       headers: {

@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Welcome = ({ login, html_url }: { login: string; html_url: string }) => {
   return (
-    <h2 className='text-center text-4xl'>
+    <h2 className='text-center text-2xl md:text-4xl'>
       Welcome
       {login && (
         <>
