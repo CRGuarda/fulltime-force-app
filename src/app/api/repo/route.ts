@@ -9,7 +9,7 @@ export async function GET(request: Request) {
     if (!owner) {
       return NextResponse.json({ error: 'Bad request.' }, { status: 400 })
     }
-    const { data } = await octokit.request(`GET /users/${owner}/repos`, {
+    const { data } = await octokit.request(`GET /users/${owner}/repos?per_page=45`, {
       username: owner,
       headers: {
         'X-GitHub-Api-Version': '2022-11-28',
