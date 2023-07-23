@@ -36,7 +36,7 @@ export default async function Home() {
   return (
     <main className='m-16'>
       <Welcome login={login} html_url={html_url} />
-      <ListOfValue label='Github username' placeholder='CRGuarda' />
+      <ListOfValue />
       <section className='grid justify-center gap-8 grid-cols-[repeat(auto-fit,minmax(180px,1fr))] m-16'>
         {commitResponse.map(({ sha, commit, html_url }) => (
           <CommitCard key={sha} commit={commit} html_url={html_url} />

@@ -1,7 +1,9 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## This project is builded on NextJS v13 using Tailwind CSS, React Server Components and Octokit.
 
 ## Getting Started
 
+This project is launched on Vercel.
+Here is the DEMO
 First, run the development server:
 
 ```bash
