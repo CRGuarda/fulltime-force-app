@@ -24,12 +24,12 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Learn More
 
-- I choose deploying on Vercel because I want to keep my API_KEY safe and is the easiest way for deploy an full project (front-end with React and back-end with NodeJS)
+- I choose deploying on Vercel because I want to keep my API_KEY safe and is the easiest way for deploy a full project (front-end with React and back-end with NodeJS)
 
 - The app can load the commits for this repo (fulltime-force-app repo) by default.
-- If you want to search for public repos for any username, you can do it by selecting (in the corresponding LoV) an owner and, after that, the public repo for this owner.
-- Commits are based on Card Components, are clickable and redirect you (in a new tab) to the chosen commit.
-- Pagination is added for the commits and public repos LoV.
+- If you want to search for public repos for any username, you can do it by typing the username (in the corresponding LoV), after that, the public repo for this owner.
+- Commits are builded on Card Components, are clickable and redirect you (in a new tab) to the chosen commit.
+- Infinite scroll is added for the commits and public repos LoV.
 - Cache implementation and Testing was stablished but NextJS v13 is a little tricky for both features and there was no time for this correct and zero-bug implementation.
 
 ## Deploy on Vercel

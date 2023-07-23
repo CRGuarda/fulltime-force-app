@@ -1,16 +1,18 @@
 'use client'
+import { getRepo } from '@/helpers/getRepo'
 import { getUsers } from '@/helpers/getUser'
 import { Options } from '@/interfaces/types.dto'
 import React, { useRef, useState } from 'react'
 import AsyncSelect from 'react-select/async'
 
-type SingleValue = {
+/* type SingleValue = {
   value: string
   label: string
-}
+} */
 
-export const ListOfValue = () => {
-  const [ownerName, setOwnerName] = useState<SingleValue | null>()
+export const ListOfValue = ({ setCredentials }: { setCredentials: any }) => {
+  const [ownerName, setOwnerName] = useState<string | null>()
+  const [repoName, setRepoName] = useState<string | null>()
   const timer = useRef<NodeJS.Timeout | number>()
 
   const loadOptions = (inputValue: string, callback: (options: Options[]) => void) => {
@@ -23,7 +25,7 @@ export const ListOfValue = () => {
   const loadRepoOptions = (inputValue: string, callback: (options: Options[]) => void) => {
     clearTimeout(timer.current)
     timer.current = window.setTimeout(async () => {
-      callback(await getUsers(inputValue))
+      callback(await getRepo(ownerName || 'CRGuarda'))
     }, 1000)
   }
   return (
@@ -34,16 +36,24 @@ export const ListOfValue = () => {
         classNamePrefix='my-react-select'
         placeholder='CRGuarda'
         loadOptions={loadOptions}
-        onChange={(e) => setOwnerName(e)}
+        onChange={(input) => {
+          setCredentials((currState: any) => ({ ...currState, owner: input?.label }))
+          setOwnerName(input?.label)
+        }}
       />
       <label>Public repo</label>
       <AsyncSelect
+        // key={ownerName || 'CRGuarda'}
         className='my-react-select-container'
         classNamePrefix='my-react-select'
-        placeholder={ownerName ? '' : 'fulltime-force-app'}
+        placeholder={ownerName ? `${ownerName} repos` : 'fulltime-force-app'}
         loadOptions={loadRepoOptions}
-        onChange={(e) => setOwnerName(e)}
+        defaultOptions
         isDisabled={!ownerName}
+        onChange={(input) => {
+          setCredentials((currState: any) => ({ ...currState, repo: input?.label }))
+          setRepoName(input?.label)
+        }}
       />
     </div>
   )

@@ -1,28 +1,18 @@
+'use client'
 import { Commit, Main } from '@/interfaces/types.dto'
 import { getCommits } from '@/helpers/getCommits'
 import { CommitCard } from '@/components/CommitCard'
 import { Welcome } from '@/components/Welcome'
 import { ListOfValue } from '@/components/ListOfValue'
-import { Metadata } from 'next'
+import { useState, useEffect } from 'react'
+import { useCommit } from '@/helpers/useCommit'
+import { Loading } from '@/components/Loading'
 
-export const metadata: Metadata = {
-  title: 'Fulltime Force App',
-  description: 'App to view the commits of a public github repository builded on NextJS',
-}
+export default function Home() {
+  const [credentials, setCredentials] = useState({ owner: 'CRGuarda', repo: 'fulltime-force-app' })
+  const { isLoading, data, error } = useCommit(credentials)
 
-export default async function Home() {
-  const {
-    error,
-    login,
-    avatar_url,
-    html_url,
-    commitResponse,
-  }: { login: string; commitResponse: Main[]; avatar_url: string; html_url: string; error: string } = await getCommits({
-    owner: 'CRGuarda',
-    repo: 'fulltime-force-app',
-  })
-
-  if (error)
+  if (!isLoading && error)
     return (
       <main>
         <div className='m-16 p-8 rounded-full bg-gray-600 text-2xl text-center font-bold text-indigo-400 md:text-8xl'>
@@ -35,10 +25,12 @@ export default async function Home() {
     )
   return (
     <main className='m-16'>
-      <Welcome login={login} html_url={html_url} />
-      <ListOfValue />
-      <section className='grid justify-center gap-8 grid-cols-[repeat(auto-fit,minmax(180px,1fr))] m-16'>
-        {commitResponse.map(({ sha, commit, html_url }) => (
+      {<Welcome login={data.login} html_url={data.html_url} />}
+      <ListOfValue setCredentials={setCredentials} />
+      <h3 className='text-2xl p-4'>Commits for {credentials.repo} repo</h3>
+      {isLoading && <Loading />}
+      <section className='grid justify-center gap-8 grid-cols-[repeat(auto-fit,minmax(180px,1fr))] mx-16 my-6'>
+        {data?.commitResponse?.map(({ sha, commit, html_url }: { sha: string; commit: Commit; html_url: string }) => (
           <CommitCard key={sha} commit={commit} html_url={html_url} />
         ))}
       </section>
