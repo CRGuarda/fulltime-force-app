@@ -3,8 +3,14 @@
 ## Getting Started
 
 This project is launched on Vercel.
-Here is the DEMO
-First, run the development server:
+
+You can test the app deployed or you can run it locally.
+
+If you want to run it locally, will need to create a `.env.local` file on your root directory, with an `API_KEY` variable (this variable is a classic token for Github API)
+
+Here is the [DEMO](https://fulltime-force-app.vercel.app/)
+
+If you want to run locally (development server), run this:
 
 ```bash
 npm run dev
@@ -16,21 +22,16 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+- I choose deploying on Vercel because I want to keep my API_KEY safe and is the easiest way for deploy an full project (front-end with React and back-end with NodeJS)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- The app can load the commits for this repo (fulltime-force-app repo) by default.
+- If you want to search for public repos for any username, you can do it by selecting (in the corresponding LoV) an owner and, after that, the public repo for this owner.
+- Commits are based on Card Components, are clickable and redirect you (in a new tab) to the chosen commit.
+- Pagination is added for the commits and public repos LoV.
+- Cache implementation and Testing was stablished but NextJS v13 is a little tricky for both features and there was no time for this correct and zero-bug implementation.
 
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
