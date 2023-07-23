@@ -5,7 +5,12 @@ import React from 'react'
 export const CommitName = ({ message }: { message: string }) => (
   <div className='grid grid-cols-[15%,1fr]'>
     <CommitIcon />
-    <h5 className='mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white'>{message}</h5>
+    <h5
+      className='mb-2 text-sm md:text-lg font-bold tracking-tight text-gray-900 dark:text-white break-words overflow-hidden truncate'
+      title={message}
+    >
+      {message}
+    </h5>
   </div>
 )
 

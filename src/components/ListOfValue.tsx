@@ -43,7 +43,7 @@ export const ListOfValue = ({ setCredentials }: { setCredentials: any }) => {
       />
       <label>Public repo</label>
       <AsyncSelect
-        // key={ownerName || 'CRGuarda'}
+        key={ownerName || 'CRGuarda'}
         className='my-react-select-container'
         classNamePrefix='my-react-select'
         placeholder={ownerName ? `${ownerName} repos` : 'fulltime-force-app'}
