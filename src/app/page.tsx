@@ -1,6 +1,6 @@
 import { Commit, Main } from '@/interfaces/types.dto'
 import { getCommits } from '@/helpers/getCommits'
-import { CommitCard } from '@/components/CommitCard'
+import { CommitCard } from '@/components/CommitCard.tsx'
 import { Welcome } from '@/components/Welcome'
 import { ListOfValue } from '@/components/ListOfValue'
 import { Metadata } from 'next'
