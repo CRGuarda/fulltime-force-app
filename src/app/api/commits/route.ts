@@ -12,7 +12,7 @@ export async function GET(request: Request) {
       data: { login, avatar_url, html_url },
     } = await octokit.rest.users.getAuthenticated()
 
-    const { data } = await octokit.request(`GET /repos/${owner}/${repo}/commits?per_page=10&page=${page}`, {
+    const { data } = await octokit.request(`GET /repos/${owner}/${repo}/commits?per_page=50&page=${page}`, {
       owner: 'CRGuarda',
       repo: 'fulltime-force-app',
       headers: {

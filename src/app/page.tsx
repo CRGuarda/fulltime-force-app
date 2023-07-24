@@ -17,9 +17,10 @@ export default function Home() {
   const { isLoading, data, error } = useCommit(credentials)
 
   const getMoreCommits = async () => {
-    if (commitsList.length < 10) return setHasMore(false)
+    console.log('first')
+    if (commitsList.length < 50) return setHasMore(false)
     const moreCommits = await fetch(
-      `/api/commits?owner=${credentials.owner}&repo=${credentials.repo}&page=${Math.ceil(commitsList.length / 10) + 1}`
+      `/api/commits?owner=${credentials.owner}&repo=${credentials.repo}&page=${Math.ceil(commitsList.length / 50) + 1}`
     )
 
     const moreCommitsRes = await moreCommits.json()
@@ -31,8 +32,11 @@ export default function Home() {
 
   useEffect(() => {
     if (!data || data?.length === 0 || data?.commitResponse?.length === 0) return
-    setHasMore(true)
     setCommitsList(data?.commitResponse)
+    if (commitsList.length !== 0 && commitsList.length < 50) {
+      return setHasMore(true)
+    }
+    setHasMore(false)
   }, [data])
 
   return (
@@ -56,7 +60,7 @@ export default function Home() {
           dataLength={commitsList.length}
           next={getMoreCommits}
           hasMore={hasMore}
-          scrollThreshold={0.4}
+          scrollThreshold={0.45}
           loader={<span className='text-center'>Cargando...</span>}
           endMessage={<p className='text-center '>Sin más resultados</p>}
         >
