@@ -37,6 +37,7 @@ export default function Home() {
       return setHasMore(true)
     }
     setHasMore(false)
+    /* don't add commitsList.length */
   }, [data])
 
   return (
