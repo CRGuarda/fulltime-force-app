@@ -10,7 +10,7 @@ import { Loading } from '@/components/Loading'
 import InfiniteScroll from 'react-infinite-scroll-component'
 
 export default function Home() {
-  const [credentials, setCredentials] = useState({ owner: 'CRGuarda', repo: 'fulltime-force-app' })
+  const [credentials, setCredentials] = useState({ owner: 'CRGuarda', repo: 'get-commits-app' })
   const [isCustomRepo, setIsCustomRepo] = useState(false)
   const [commitsList, setCommitsList] = useState([])
   const [hasMore, setHasMore] = useState(true)

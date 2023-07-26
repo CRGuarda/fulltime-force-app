@@ -46,7 +46,7 @@ export const ListOfValue = ({ setCredentials }: { setCredentials: any }) => {
         key={ownerName || 'CRGuarda'}
         className='my-react-select-container w-full md:w-1/2'
         classNamePrefix='my-react-select'
-        placeholder={ownerName ? `${ownerName} repos` : 'fulltime-force-app'}
+        placeholder={ownerName ? `${ownerName} repos` : 'get-commits-app'}
         loadOptions={loadRepoOptions}
         defaultOptions
         isDisabled={!ownerName}

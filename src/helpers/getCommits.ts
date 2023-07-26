@@ -1,6 +1,6 @@
 import { headers } from 'next/headers'
 
-export async function getCommits({ owner = 'CRGuarda', repo = 'fulltime-force-app' }: { owner: string; repo: string }) {
+export async function getCommits({ owner = 'CRGuarda', repo = 'get-commits-app' }: { owner: string; repo: string }) {
   try {
     const host = headers().get('host')
     const protocol = process.env.NODE_ENV !== 'development' ? 'https' : 'http'

@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server'
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
   const owner = searchParams.get('owner') || 'CRGuarda'
-  const repo = searchParams.get('repo') || 'fulltime-force-app'
+  const repo = searchParams.get('repo') || 'get-commits-app'
   const page = searchParams.get('page') || 1
   try {
     const {
@@ -14,7 +14,7 @@ export async function GET(request: Request) {
 
     const { data } = await octokit.request(`GET /repos/${owner}/${repo}/commits?per_page=50&page=${page}`, {
       owner: 'CRGuarda',
-      repo: 'fulltime-force-app',
+      repo: 'get-commits-app',
       headers: {
         'X-GitHub-Api-Version': '2022-11-28',
       },
